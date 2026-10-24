@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg-primary: #1C1B19;
+  --bg-secondary: #252421;
+  --bg-card: #252421;
+  --bg-input: #1E1C1A;
+  --bg-header: rgba(28, 27, 25, 0.98);
+  --bg-footer: #1C1B19;
+  --bg-hover: #C6AE83;
+  --border-primary: #3A3731;
+  --border-input: #4A4541;
+  --text-primary: #F5F0E8;
+  --text-secondary: #B8B1A5;
+  --text-muted: #777B70;
+  --text-faint: #5A5751;
+  --scrollbar-track: #1E1C1A;
+  --scrollbar-thumb: #4A4541;
+  --accent-primary: #C6AE83;
+  --accent-primary-hover: #B6A07A;
+  --accent-secondary: #B6A99A;
+  --accent-secondary-hover: #A69787;
+  --accent-text: #C6AE83;
+  --ring-offset: #1C1B19;
+  --selection-bg: #C6AE83;
+  --selection-text: #1C1B19;
+}
+
+html.light {
+  color-scheme: light;
+  --bg-primary: #F5F0E8;
+  --bg-secondary: #FFFCF7;
+  --bg-card: #FFFCF7;
+  --bg-input: #FFFCF7;
+  --bg-header: rgba(245, 240, 232, 0.98);
+  --bg-footer: #F0E6DC;
+  --bg-hover: #B6A99A;
+  --border-primary: #E3D9CC;
+  --border-input: #E3D9CC;
+  --text-primary: #332A24;
+  --text-secondary: #6E6257;
+  --text-muted: #B6A99A;
+  --text-faint: #A59988;
+  --scrollbar-track: #F0E6DC;
+  --scrollbar-thumb: #E3D9CC;
+  --accent-primary: #80664D;
+  --accent-primary-hover: #6B5339;
+  --accent-secondary: #B6A99A;
+  --accent-secondary-hover: #A69787;
+  --accent-text: #80664D;
+  --ring-offset: #F5F0E8;
+  --selection-bg: #80664D;
+  --selection-text: #F5F0E8;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding-top: 64px; /* Exact header height offset to completely prevent content overlap */
+}
+
+/* Background utilities */
+.bg-zinc-950,
+.bg-zinc-900\/80,
+.bg-zinc-950\/80 {
+  background-color: var(--bg-primary) !important;
+}
+
+.bg-zinc-900,
+.bg-zinc-800 {
+  background-color: var(--bg-card) !important;
+}
+
+.bg-zinc-900\/50 {
+  background-color: color-mix(in srgb, var(--bg-card) 50%, transparent) !important;
+}
+
+/* Borders */
+.border-zinc-800,
+.border-zinc-700 {
+  border-color: var(--border-primary) !important;
+}
+
+/* Text colors */
+.text-zinc-100,
+.text-zinc-200 {
+  color: var(--text-primary) !important;
+}
+
+.text-zinc-300 {
+  color: var(--text-secondary) !important;
+}
+
+.text-zinc-400 {
+  color: var(--text-muted) !important;
+}
+
+.text-zinc-500 {
+  color: var(--text-faint) !important;
+}
+
+html.light .text-white {
+  color: var(--text-primary) !important;
+}
+
+/* Header */
+header {
+  background-color: var(--bg-header) !important;
+  border-color: var(--border-primary) !important;
+}
+
+/* Footer */
+footer {
+  background-color: var(--bg-footer) !important;
+  border-color: var(--border-primary) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Inputs & textareas */
+html.light textarea,
+html.light input[type="text"],
+html.light input[type="email"],
+html.light select,
+textarea,
+input[type="text"],
+input[type="email"],
+select {
+  background-color: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-input) !important;
+}
+
+/* Cards */
+html.light [class*="bg-zinc-9"],
+[class*="bg-zinc-9"] {
+  background-color: var(--bg-card) !important;
+}
+
+/* Scrollbar */
+textarea::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+  width: 6px;
+}
+textarea::-webkit-scrollbar-track,
+pre::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+textarea::-webkit-scrollbar-thumb,
+pre::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+}
+
+/* Animations */
+.cursor-blink::after {
+  content: "▌";
+  color: var(--accent-primary);
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes bounce-short {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-bounce-short {
+  animation: bounce-short 2s infinite;
+}
+
+/* Print Stylesheet */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    padding-top: 0 !important;
+  }
+  header, footer, button, .no-print {
+    display: none !important;
+  }
+  pre, div {
+    background: transparent !important;
+    color: black !important;
+    border-color: #ccc !important;
+  }
+}
